@@ -1,20 +1,44 @@
-# Create .gitignore file
-# This .gitignore configuration is correct for an AWS Amplify project
-# It includes common files/directories that should not be version controlled:
-# - Build outputs (build/, dist/, .next)
-# - Environment files (.env, .env.local) 
-# - Dependencies (node_modules)
-# - System files (.DS_Store)
-# - AWS Amplify specific files and directories
-echo "node_modules
-.next
+# Dependencies
+node_modules
+node_modules/
+
+# Next.js specific
+.next/
+out/
+build
+.vercel
+
+# Environment files
 .env
 .env.local
-.DS_Store
+.env*.local
+
+# Debug logs
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# TypeScript specific
+*.tsbuildinfo
+next-env.d.ts
+
+# Coverage directory
+coverage
+
+# AWS Amplify specific files and directories
 .amplify
+
 #amplify-do-not-edit-begin
-amplify/\#current-cloud-backend
+amplify/#current-cloud-backend
 amplify/.config/local-*
 amplify/logs
 amplify/mock-data
@@ -33,4 +57,4 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 **.sample
-#amplify-do-not-edit-end" > .gitignore
+#amplify-do-not-edit-end
