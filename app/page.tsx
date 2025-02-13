@@ -9,7 +9,7 @@ export default function Home() {
     return (
       <View padding="1rem">
         <Card variation="elevated">
-          <Heading level={1} className='page-title'>Welcome to my Next.js App</Heading>
+          <Heading level={1} className='page-title'>Welcome to Chero's App</Heading>
           <nav>
             <Button as="a" href="/about">About Us</Button>
           </nav>
