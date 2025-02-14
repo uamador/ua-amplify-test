@@ -16,6 +16,9 @@ export default function Home() {
             <nav>
                 <Button as="a" href="/projects">My Projects</Button>
             </nav>
+            <nav>
+                <Button as="a" href="/advisor">AI Advisor</Button>
+            </nav>
         </Card>
       </View>
     )

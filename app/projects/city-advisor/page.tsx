@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import { Button, Card, Heading, Text, View, Image, Flex, SelectField} from '@aws-amplify/ui-react'
-// Add these arrays outside your component
+import { Card, Heading, View, SelectField} from '@aws-amplify/ui-react'
+
 const cities = [
     "New York, NY",
     "Los Angeles, CA",
@@ -32,46 +32,9 @@ const tones = [
     "Humorous"
 ].sort();
 
-
 export default function CityAdvisor() {
-    const [city, setCity] = useState('');
-    const [tone, setTone] = useState('');
-    const [response, setResponse] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-
-    const handleSubmit = async () => {
-        if (!city || !tone) {
-            setError('Please select both a city and a tone');
-            return;
-        }
-
-        setLoading(true);
-        setError('');
-
-        try {
-            const res = await fetch('/api/city-advisor', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ city, tone }),
-            });
-
-            const data = await res.json();
-
-            if (data.error) {
-                throw new Error(data.error);
-            }
-
-            setResponse(data.response);
-        } catch (err) {
-            setError('Failed to get city advice. Please try again.');
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const [city, setCity] = React.useState('');
+    const [tone, setTone] = React.useState('');
 
     return (
         <View padding="1rem">
@@ -105,27 +68,6 @@ export default function CityAdvisor() {
                         ))}
                     </SelectField>
                 </View>
-                <Button onClick={handleSubmit} isDisabled={loading}>
-                    Get City Advice
-                </Button>
-
-                {loading && (
-                    <View marginTop="1rem">
-                        <Loader />
-                    </View>
-                )}
-
-                {error && (
-                    <View marginTop="1rem">
-                        <Text color="red">{error}</Text>
-                    </View>
-                )}
-
-                {response && (
-                    <View marginTop="1rem">
-                        <Text>{response}</Text>
-                    </View>
-                )}
             </Card>
         </View>
     );
